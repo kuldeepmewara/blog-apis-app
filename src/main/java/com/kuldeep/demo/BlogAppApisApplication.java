@@ -42,7 +42,6 @@ public class BlogAppApisApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		System.out.println(this.passwordEncoder.encode("123"));
 		
 		try {
 			Role role=new Role();
@@ -68,7 +67,7 @@ public class BlogAppApisApplication implements CommandLineRunner {
 //		    myuser.setAbout("hello");
 //			myuser.setEmail("kuldeep@gmail.com");
 //			myuser.setName("kuldeep");
-//			myuser.setPassword(this.passwordEncoder.encode("123"));
+//			myuser.setPassword(this.passwordEncoder.encode("enterpassword"));
 //			myuser.getRoles().add(role);
 //			Users u=this.userRepo.save(myuser);
 			
