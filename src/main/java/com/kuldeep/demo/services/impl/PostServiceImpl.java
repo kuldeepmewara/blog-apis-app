@@ -53,7 +53,7 @@ public class PostServiceImpl implements PostService {
 		post.setImageName("default.png");
 		post.setAddedDate(new Date());
 		post.setCategory(cat);
-		post.setMyuser(user);
+		post.setUser(user);
 		
 		Post newPost=this.postRepo.save(post);
 		

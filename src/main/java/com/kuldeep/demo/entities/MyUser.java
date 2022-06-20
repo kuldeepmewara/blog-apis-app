@@ -18,10 +18,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="`myuser`")
 @NoArgsConstructor
 @Setter
 @Getter
+@Table(name="`users`")
 public class MyUser implements UserDetails {
 	
 	@Id

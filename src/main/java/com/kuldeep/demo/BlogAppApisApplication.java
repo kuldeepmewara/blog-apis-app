@@ -62,14 +62,14 @@ public class BlogAppApisApplication implements CommandLineRunner {
 				System.out.println(r.getName());
 			});
 			
-//			MyUser myuser=new User();
-//			myuser.setId(AppConstants.ADMIN_USER_ID);
-//			myuser.setAbout("hello");
-//			myuser.setEmail("kuldeep@gmail.com");
-//			myuser.setName("kuldeep");
-//			myuser.setPassword(this.passwordEncoder.encode("123"));
-//			myuser.getRoles().add(role);
-//			MyUser u=this.userRepo.save(myuser);
+	        MyUser myuser=new MyUser();
+			myuser.setId(AppConstants.ADMIN_USER_ID);
+		myuser.setAbout("hello");
+			myuser.setEmail("kuldeep@gmail.com");
+			myuser.setName("kuldeep");
+			myuser.setPassword(this.passwordEncoder.encode("123"));
+			myuser.getRoles().add(role);
+			MyUser u=this.userRepo.save(myuser);
 			//System.out.println(u.getRoles().toString());
 			
 		}

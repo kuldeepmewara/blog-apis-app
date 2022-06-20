@@ -32,7 +32,7 @@ public class CommentServiceImpl implements CommentService {
 		Post post=this.postRepo.findById(postId).orElseThrow(()->new ResourceNotFoundException("post", "post id", postId));
 		Comment comment=this.modelMapper.map(commentDto, Comment.class);
 		comment.setPost(post);
-		comment.setMyuser(post.getMyuser());
+		comment.setUser(post.getUser());
 		comment.setDate(new Date());
 		
 		Comment savedComment=this.commentRepo.save(comment);
