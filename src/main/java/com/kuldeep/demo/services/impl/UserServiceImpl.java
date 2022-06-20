@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.kuldeep.demo.config.AppConstants;
 import com.kuldeep.demo.entities.Role;
-import com.kuldeep.demo.entities.User;
+import com.kuldeep.demo.entities.MyUser;
 import com.kuldeep.demo.exceptions.ResourceNotFoundException;
 import com.kuldeep.demo.payloads.UserDto;
 import com.kuldeep.demo.repositories.RoleRepo;
@@ -37,8 +37,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserDto createUser(UserDto userDto) {
 		
-		User user=this.dtoToUser(userDto);
-		User savedUser=this.userRepo.save(user);
+		MyUser user=this.dtoToUser(userDto);
+		MyUser savedUser=this.userRepo.save(user);
 		
 		return this.userToDto(savedUser);
 	}
@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserDto updateuser(UserDto userDto, Integer userId) {
 		
-		User user=this.userRepo.findById(userId).
+		MyUser user=this.userRepo.findById(userId).
 				orElseThrow(()->new ResourceNotFoundException("user","id",userId));
 		
 		user.setEmail(userDto.getEmail());
@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserDto getuserById(Integer userId) {
 		
-		User user=this.userRepo.findById(userId).
+		MyUser user=this.userRepo.findById(userId).
 				orElseThrow(()->new ResourceNotFoundException("user","id",userId));
 		
 		return this.userToDto(user);
@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService {
 	//GET ALL USERS
 	@Override
 	public List<UserDto> getAllUsers() {
-		List<User> users=this.userRepo.findAll();
+		List<MyUser> users=this.userRepo.findAll();
 		
 		List<UserDto> userDtos = users.stream()
 				.map(user->this.userToDto(user))
@@ -85,14 +85,14 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void deleteUser(Integer userId) {
 		
-		User user=this.userRepo.findById(userId)
+		MyUser user=this.userRepo.findById(userId)
 				.orElseThrow(()->new ResourceNotFoundException("user", "id", userId));
         this.userRepo.delete(user);
 	}
 	
-	public  User dtoToUser(UserDto userDto)
+	public  MyUser dtoToUser(UserDto userDto)
 	{
-		User user=this.modelMapper.map(userDto, User.class);
+		MyUser user=this.modelMapper.map(userDto, MyUser.class);
 		
 //		user.setId(userDto.getId());
 //		user.setEmail(userDto.getEmail());
@@ -103,7 +103,7 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 	
-	public UserDto userToDto(User user)
+	public UserDto userToDto(MyUser user)
 	{
 		UserDto userDto=this.modelMapper.map(user, UserDto.class);
 		
@@ -119,7 +119,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserDto registerUser(UserDto userDto) {
 		
-		User user=this.modelMapper.map(userDto, User.class);
+		MyUser user=this.modelMapper.map(userDto, MyUser.class);
 		//encode password
 		user.setPassword(this.passwordEncoder.encode(userDto.getPassword()));
 		
@@ -127,7 +127,7 @@ public class UserServiceImpl implements UserService {
 		Role role=this.roleRepo.findById(AppConstants.NORMAL_USER).get();
 		user.getRoles().add(role);
 		
-		User newUser=this.userRepo.save(user);
+		MyUser newUser=this.userRepo.save(user);
 		
 		return this.modelMapper.map(newUser,UserDto.class);
 	}

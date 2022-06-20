@@ -18,11 +18,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="`users`")
+@Table(name="`myuser`")
 @NoArgsConstructor
 @Setter
 @Getter
-public class User implements UserDetails {
+public class MyUser implements UserDetails {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

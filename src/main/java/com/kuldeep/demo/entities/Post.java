@@ -38,7 +38,7 @@ public class Post {
 	private Category category;
 	
 	@ManyToOne
-	private User user;
+	private MyUser myuser;
 	
 	@OneToMany(mappedBy="post",cascade=	CascadeType.ALL)
 	private List<Comment> comments=new ArrayList<>();

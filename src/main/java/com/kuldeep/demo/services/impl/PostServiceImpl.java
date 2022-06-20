@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.kuldeep.demo.entities.Category;
 import com.kuldeep.demo.entities.Post;
-import com.kuldeep.demo.entities.User;
+import com.kuldeep.demo.entities.MyUser;
 import com.kuldeep.demo.exceptions.ResourceNotFoundException;
 import com.kuldeep.demo.payloads.PostDto;
 import com.kuldeep.demo.payloads.PostResponse;
@@ -42,7 +42,7 @@ public class PostServiceImpl implements PostService {
 	public PostDto createPost(PostDto postDto,Integer userId, Integer catId) {
 		
 
-		User user=this.userRepo.findById(userId).
+		MyUser user=this.userRepo.findById(userId).
 				orElseThrow(()->new ResourceNotFoundException("user","id",userId));
 		
 		Category cat=this.categoryRepo.findById(catId).
@@ -53,7 +53,7 @@ public class PostServiceImpl implements PostService {
 		post.setImageName("default.png");
 		post.setAddedDate(new Date());
 		post.setCategory(cat);
-		post.setUser(user);
+		post.setMyuser(user);
 		
 		Post newPost=this.postRepo.save(post);
 		
@@ -150,7 +150,7 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public PostResponse getPostByUser(Integer userId,Integer pageNumber,Integer pageSize) {
-		User user =this.userRepo.findById(userId)
+		MyUser user =this.userRepo.findById(userId)
 				.orElseThrow(()->new ResourceNotFoundException("user", "user id", userId));
 		
 		Pageable p = PageRequest.of(pageNumber, pageSize);
