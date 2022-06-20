@@ -13,7 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.kuldeep.demo.config.AppConstants;
 import com.kuldeep.demo.entities.Role;
-import com.kuldeep.demo.entities.User;
+import com.kuldeep.demo.entities.Users;
 import com.kuldeep.demo.repositories.RoleRepo;
 import com.kuldeep.demo.repositories.UserRepo;
 
@@ -63,14 +63,14 @@ public class BlogAppApisApplication implements CommandLineRunner {
 			});
 			
 			
-//	        User myuser=new User();
-//			myuser.setId(AppConstants.ADMIN_USER_ID);
-//		    myuser.setAbout("hello");
-//			myuser.setEmail("kuldeep@gmail.com");
-//			myuser.setName("kuldeep");
-//			myuser.setPassword(this.passwordEncoder.encode("123"));
-//			myuser.getRoles().add(role);
-//			User u=this.userRepo.save(myuser);
+	        Users myuser=new Users();
+			myuser.setId(AppConstants.ADMIN_USER_ID);
+		    myuser.setAbout("hello");
+			myuser.setEmail("kuldeep@gmail.com");
+			myuser.setName("kuldeep");
+			myuser.setPassword(this.passwordEncoder.encode("123"));
+			myuser.getRoles().add(role);
+			Users u=this.userRepo.save(myuser);
 			
 			//System.out.println(u.getRoles().toString());
 			

@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.kuldeep.demo.entities.User;
+import com.kuldeep.demo.entities.Users;
 import com.kuldeep.demo.exceptions.ResourceNotFoundException;
 import com.kuldeep.demo.repositories.UserRepo;
 
@@ -19,7 +19,7 @@ public class CustomUserDetailService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
-		User user=this.userRepo.findByEmail(username)
+		Users user=this.userRepo.findByEmail(username)
 				.orElseThrow(()->new ResourceNotFoundException("user", "email : "+username, 0));
 		return user;
 	}

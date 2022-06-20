@@ -10,12 +10,12 @@ import org.springframework.data.repository.query.Param;
 
 import com.kuldeep.demo.entities.Category;
 import com.kuldeep.demo.entities.Post;
-import com.kuldeep.demo.entities.User;
+import com.kuldeep.demo.entities.Users;
 
 public interface PostRepo extends JpaRepository<Post, Integer> {
 	
 
-	Page<Post> findByUser(User user, Pageable p);
+	Page<Post> findByUser(Users user, Pageable p);
 
 	Page<Post> findByCategory(Category category,Pageable p);
 	

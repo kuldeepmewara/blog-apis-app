@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 
 import com.kuldeep.demo.entities.Category;
 import com.kuldeep.demo.entities.Comment;
-import com.kuldeep.demo.entities.User;
+import com.kuldeep.demo.entities.Users;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

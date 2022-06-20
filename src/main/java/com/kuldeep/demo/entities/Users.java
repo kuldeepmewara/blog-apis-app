@@ -22,7 +22,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Table(name="users")
-public class User implements UserDetails {
+public class Users implements UserDetails {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -40,7 +40,7 @@ public class User implements UserDetails {
 	private List<Post> posts =new ArrayList();
 	
 	@ManyToMany(cascade=CascadeType.ALL,fetch =FetchType.EAGER)
-	@JoinTable(name="user_role",joinColumns=@JoinColumn(name="user",referencedColumnName="id"),
+	@JoinTable(name="user_role",joinColumns=@JoinColumn(name="users",referencedColumnName="id"),
 	inverseJoinColumns=@JoinColumn(name="role",referencedColumnName="Id"))
 	private Set<Role> roles=new HashSet<>();
 
