@@ -21,7 +21,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Setter
 @Getter
-@Table(name="`users`")
+@Table(name="users")
 public class MyUser implements UserDetails {
 	
 	@Id
