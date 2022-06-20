@@ -4,10 +4,10 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.kuldeep.demo.entities.MyUser;
+import com.kuldeep.demo.entities.User;
 
-public interface UserRepo extends JpaRepository<MyUser, Integer> {
+public interface UserRepo extends JpaRepository<User, Integer> {
 	
-	Optional<MyUser> findByEmail(String email);
+	Optional<User> findByEmail(String email);
 
 }

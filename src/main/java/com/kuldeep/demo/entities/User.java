@@ -22,7 +22,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Table(name="users")
-public class MyUser implements UserDetails {
+public class User implements UserDetails {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

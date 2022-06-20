@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.kuldeep.demo.entities.Category;
 import com.kuldeep.demo.entities.Post;
-import com.kuldeep.demo.entities.MyUser;
+import com.kuldeep.demo.entities.User;
 import com.kuldeep.demo.payloads.PostDto;
 import com.kuldeep.demo.payloads.PostResponse;
 
