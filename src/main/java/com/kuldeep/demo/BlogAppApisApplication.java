@@ -13,7 +13,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.kuldeep.demo.config.AppConstants;
 import com.kuldeep.demo.entities.Role;
+import com.kuldeep.demo.entities.User;
 import com.kuldeep.demo.repositories.RoleRepo;
+import com.kuldeep.demo.repositories.UserRepo;
 
 @SpringBootApplication
 public class BlogAppApisApplication implements CommandLineRunner {
@@ -23,6 +25,10 @@ public class BlogAppApisApplication implements CommandLineRunner {
 	
 	@Autowired
 	private RoleRepo roleRepo;
+	
+
+	@Autowired
+	private UserRepo userRepo;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(BlogAppApisApplication.class, args);
@@ -55,6 +61,17 @@ public class BlogAppApisApplication implements CommandLineRunner {
 			result.forEach(r->{
 				System.out.println(r.getName());
 			});
+			
+			User user=new User();
+			user.setId(AppConstants.ADMIN_USER_ID);
+			user.setAbout("hello");
+			user.setEmail("kuldeep@gmail.com");
+			user.setName("kuldeep");
+			user.setPassword(this.passwordEncoder.encode("123"));
+			user.getRoles().add(role);
+			User u=this.userRepo.save(user);
+			//System.out.println(u.getRoles().toString());
+			
 		}
 		catch(Exception ex)
 		{
