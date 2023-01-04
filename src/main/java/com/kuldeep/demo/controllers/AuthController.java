@@ -1,5 +1,7 @@
 package com.kuldeep.demo.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +11,7 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -64,8 +67,10 @@ public class AuthController {
 	
 	//register user
 	@PostMapping("/register")
-	public ResponseEntity<UserDto> registerUser(@RequestBody UserDto userDto)
+	public ResponseEntity<UserDto> registerUser(@Valid @RequestBody UserDto userDto)
 	{
+		//System.out.println(userDto.getEmail()+userDto.getName()+userDto.getAbout()+userDto.getPassword());
+		
 		UserDto registeredUser=this.userService.registerUser(userDto);
 		return new ResponseEntity<UserDto>(registeredUser,HttpStatus.OK);
 	}
